@@ -1,0 +1,28 @@
+name: 'Publish Factorio mod'
+description: 'Publish a Factorio mod on the official mod portal'
+inputs:
+  factorio_token:
+    description: 'Factorio mod portal token'
+    required: true
+  mod_name:
+    description: 'Name of the mod'
+    required: true
+  description_file:
+    description: "Mod description"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Set GitHub Path
+      run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
+      shell: bash
+      env:
+        GITHUB_ACTION_PATH: ${{ github.action_path }}
+
+    - name: Upload mod file
+      run: edit_details.sh
+      shell: bash
+      env:
+        FACTORIO_PORTAL_TOKEN: ${{ inputs.factorio_token }}
+        MOD_NAME: ${{ inputs.mod_name }}
+        DESCRIPTION_FILE: ${{ inputs.description_file }}
