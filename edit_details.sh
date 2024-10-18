@@ -1,3 +1,3 @@
 #!/bin/bash
 
-curl -X POST -d mod="${MOD_NAME}" -d description="@${DESCRIPTION_FILE}" -H "Authorization: Bearer ${FACTORIO_PORTAL_TOKEN}"  https://mods.factorio.com/api/v2/mods/edit_details
+curl -X POST -F mod="${MOD_NAME}" -F description="@${DESCRIPTION_FILE}" -H "Authorization: Bearer ${FACTORIO_PORTAL_TOKEN}"  https://mods.factorio.com/api/v2/mods/edit_details
